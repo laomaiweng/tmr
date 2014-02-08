@@ -41,7 +41,28 @@ Due to limitations in the current implementation of TMR, both these procedures *
 
 Tcl 8.6 (with threading enabled)
 
-Easily adaptable to Tcl 8.5 (with Thread extension): try{} constructs to replace by simple catch{} constructs.
+Easily adaptable to Tcl 8.5 (with Thread extension): _try{}_ constructs to replace by simple _catch{}_ constructs.
+
+
+## Samples
+
+### _wordcount_
+
+Count the occurences of all words in a text.
+
+Sample usage:
+````Tcl
+# Split the input text in blocks of 100 lines
+set text [::wc::slab $text 100]
+# Execute the word-count map-reduce algorithm on 4 threads
+set words [::tmr::mapreduce -threads 4 $text ::wc::map ::wc::reduce]
+# Sort the words from most to least occurring
+set words [lsort -integer -decreasing -stride 2 -index 1 $words]
+# Dump the Top-5 words to stdout
+foreach {w c} [lrange $words 0 9] {
+    puts "$w\t$c"
+}
+````
 
 
 ## Further information
