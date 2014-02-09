@@ -39,7 +39,8 @@ Due to limitations in the current implementation of TMR, both these procedures *
 
 ## Requirements
 
-Tcl 8.6 (with threading enabled)
+* Tcl 8.6 (with threading enabled)
+* QUtils package from https://github.com/laomaiweng/scripts (in _tcl/qutils_)
 
 Easily adaptable to Tcl 8.5 (with Thread extension): _try{}_ constructs to replace by simple _catch{}_ constructs.
 
